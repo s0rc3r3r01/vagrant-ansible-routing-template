@@ -37,7 +37,7 @@ Vagrant.configure(2) do |config|
           node.vm.network "private_network", type: "dhcp"
         end
       end
-      node.vm.synced_folder ".", "/vagrant"
+      node.vm.synced_folder ".", "/vagrant", :mount_options => ["dmode=777","fmode=666"]
       node.vm.provider "virtualbox" do |v|
         v.memory = nodes["mem"]
         v.cpus = nodes["cpus"]
