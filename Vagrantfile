@@ -45,7 +45,9 @@ Vagrant.configure(2) do |config|
     end
   end
   config.vm.provision :ansible do |ansible|
+    ansible.verbose = "vvv"   
     ansible.playbook = "bootstrap.yml"
+    ansible.raw_ssh_args = ['-o ControlMaster=no']
   end
 #  if Vagrant.has_plugin?("vagrant-cachier")
 #    config.cache.scope = :box
